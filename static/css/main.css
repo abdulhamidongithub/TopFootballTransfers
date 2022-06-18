@@ -100,6 +100,21 @@
   padding: 10px 10px;
   padding-bottom: 10px;
 }
+.country-clubs h2 {
+  margin: 10px 0px;
+  transition: all 0.3s ease;
+}
+.country-clubs h2 a {
+  text-decoration: none;
+}
+.country-clubs h2:hover {
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: red;
+}
+.country-clubs h2:hover a {
+  color: white;
+}
 .country-clubs #title {
   font-size: 30px;
   background-color: red;
@@ -272,7 +287,8 @@
 .clubs .club:hover {
   border: none;
   border-radius: 5px;
-  background-color: lightblue;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
   border-left: 4px solid red;
 }
 .clubs .club a {
@@ -620,14 +636,13 @@
     width: 90% !important;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1450px) {
   .content {
-    max-width: 900px !important;
-    margin-left: 40%;
+    max-width: 1000px !important;
+    margin-left: 35%;
   }
   .content .clubs {
     width: 100%;
-    border: 2px solid black;
   }
   .content .clubs .club {
     width: 200px;
@@ -635,12 +650,16 @@
   }
 
   .nav {
-    left: 40%;
-    width: 900px;
+    left: 35%;
+    width: 1000px;
   }
 
   .latest-transfers {
-    margin-left: 40%;
-    width: 900px;
+    margin-left: 35%;
+    width: 1000px;
+  }
+
+  .top-players tr td {
+    width: 150px;
   }
 }/*# sourceMappingURL=main.css.map */

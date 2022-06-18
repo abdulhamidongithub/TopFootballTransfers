@@ -11,6 +11,8 @@ urlpatterns = [
     path('courses/', CourseView.as_view(), name="courses"),
     path('U20-players/', U20PlayersView.as_view(), name="U20-players"),
     path('latest-transfers/', TransfersView.as_view(), name="transfers"),
+    path('season/<str:season>/', SeasonView.as_view(), name="season"),
+    path('transfer-archive/', TransferArchive.as_view(), name="transfer-archive"),
     path('club_players/<str:club_name>/', ClubPlayersView.as_view(), name="club_players"),
 ]
 

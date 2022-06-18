@@ -627,14 +627,13 @@
     }
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1450px) {
   .content {
-    max-width: 900px !important;
-    margin-left: 40%;
+    max-width: 1000px !important;
+    margin-left: 35%;
 
     .clubs {
       width: 100%;
-      border: 2px solid black;
       .club {
         width: 200px;
         margin: 0px 30px;
@@ -642,11 +641,18 @@
     }
   }
   .nav {
-    left: 40%;
-    width: 900px;
+    left: 35%;
+    width: 1000px;
   }
   .latest-transfers {
-    margin-left: 40%;
-    width: 900px;
+    margin-left: 35%;
+    width: 1000px;
+  }
+  .top-players{
+    tr{
+      td{
+        width: 150px;
+      }
+    }
   }
 }

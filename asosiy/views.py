@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render
 from django.views import View
 from .models import *
@@ -68,4 +69,21 @@ class ClubPlayersView(View):
 class CourseView(View):
     def get(self, request):
         return render(request, "courses.html")
+
+class TransferArchive(View):
+    def get(self, request):
+        s = Transfer.objects.all().values('season').annotate(count=Count('season'))
+        data = {
+            "seasons" : s
+        }
+        return render(request, "transfer-archive.html", data)
+
+class SeasonView(View):
+    def get(self, request, season):
+        data = {
+            "transfers" : Transfer.objects.filter(season=season[12:17]),
+            "season" : season[12:17]
+        }
+        return render(request, "season.html", data)
+
 
