@@ -108,15 +108,13 @@
         </div>
       <div class="latest-transfers">
         <table class="top-players">
-        {% for transfer in transfers %}
           <tr>
-            <td>{{forloop.counter}} {{transfer.player.name}}</td>
+            <td>1. Mbappe</td>
             <td>{{transfer.old_club}}</td>
             <td>{{transfer.new_club}}</td>
-            <td>{{transfer.value}}</td>
-            <td>{{transfer.season}}</td>
+            <td>180</td>
+            <td>17/18</td>
           </tr>
-        {% endfor %}
         </table>
         <hr>
         <p>It is a list of the most expensive transfers of all time. The minimum transfer value is 50 million euro.</p>

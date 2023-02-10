@@ -38,8 +38,11 @@ class TransfersView(View):
 
 class U20PlayersView(View):
     def get(self, request):
+        from datetime import date, timedelta
+        enddate = date.today()
+        startdate = enddate - timedelta(days=7305)
         data = {
-            "players": U_20.objects.all().order_by("-value")
+            "players": U_20.objects.filter(date__range=[startdate, enddate]).order_by("-value", '-date')
         }
         return render(request, "U-20 players.html", data)
 

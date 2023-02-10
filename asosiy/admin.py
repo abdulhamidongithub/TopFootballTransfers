@@ -11,10 +11,6 @@ class PlayerAdmin(admin.ModelAdmin):
     search_fields = ("name", "club",)
     list_filter = ("club",)
 
-@admin.register(U_20)
-class U_20Admin(admin.ModelAdmin):
-    search_fields = ("name", "club",)
-    list_filter = ("club",)
 
 @admin.register(Transfer)
 class TransferAdmin(admin.ModelAdmin):

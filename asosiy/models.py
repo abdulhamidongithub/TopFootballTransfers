@@ -1,46 +1,40 @@
 from django.db import models
-from django.conf import settings
 
 class Club(models.Model):
-    name = models.CharField(max_length=100)
-    logo = models.FileField(upload_to="rasmlar/", blank=True, null=True)
-    country = models.CharField(max_length=100, blank=True)
-    president = models.CharField(max_length=100, blank=True)
-    coach = models.CharField(max_length=100, blank=True)
-    stadium = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    logo = models.FileField(null=True, blank=True)
+    prezident = models.CharField(max_length=100, blank=True, null=True)
+    murabbiy = models.CharField(max_length=100, blank=True, null=True)
     foundation = models.DateField(null=True, blank=True)
-    record_arrival = models.CharField(max_length=300)
-    record_departure = models.CharField(max_length=300)
-
+    eng_katta_tr = models.CharField(max_length=100, blank=True, null=True)
+    eng_katta_sotuv = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return self.name
 
 class Player(models.Model):
-    name = models.CharField(max_length=100)
-    nationality = models.CharField(max_length=100, blank=True)
-    position = models.CharField(max_length=100, blank=True)
-    club = models.ForeignKey(Club, on_delete=models.SET_NULL, null=True)
-    value = models.IntegerField()
-
-    def __str__(self):
-        return self.name
-
-class U_20(models.Model):
-    name = models.CharField(max_length=100)
-    age = models.IntegerField()
-    club = models.ForeignKey(Club, on_delete=models.SET_NULL, null=True)
-    value = models.IntegerField()
-
+    name = models.CharField(max_length=50)
+    position = models.CharField(max_length=30)
+    nationality = models.CharField(max_length=30)
+    birth_date = models.DateField(null=True, blank=True)
+    value = models.FloatField()
+    club = models.ForeignKey(Club, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.name
 
 class Transfer(models.Model):
-    player = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True)
-    old_club = models.CharField(max_length=100, blank=True, null=True)
-    new_club = models.CharField(max_length=100, blank=True, null=True)
-    value = models.IntegerField()
-    value_by_tft = models.IntegerField()
-    season = models.CharField(max_length=100, blank=True, null=True)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, null=True)
+    old_club = models.ForeignKey(Club, on_delete=models.CASCADE, related_name="sotganlari", null=True)
+    new_club = models.ForeignKey(Club, on_delete=models.CASCADE, null=True)
+    value = models.FloatField()
+    tax_narx = models.FloatField(null=True, blank=True)
+    season = models.CharField(max_length=7, null=True, blank=True)
+
+
+class HozirgiMavsum(models.Model):
+    mavsum = models.CharField(max_length=7)
+    def __str__(self):
+        return self.mavsum
 
 class Expenditure_Records(models.Model):
     club = models.CharField(max_length=100)
