@@ -42,7 +42,8 @@ class U20PlayersView(View):
         enddate = date.today()
         startdate = enddate - timedelta(days=7305)
         data = {
-            "players": U_20.objects.filter(date__range=[startdate, enddate]).order_by("-value", '-date')
+            "players": Player.objects.filter(birth_date__range=[startdate, enddate]).order_by("-value", '-birth_date'),
+            "bu_yil": enddate.year
         }
         return render(request, "U-20 players.html", data)
 
