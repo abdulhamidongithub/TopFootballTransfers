@@ -31,8 +31,9 @@ class PlayersView(View):
 
 class TransfersView(View):
     def get(self, request):
+        h_mavsum = HozirgiMavsum.objects.last().mavsum
         data = {
-            "transfers" : Transfer.objects.all().order_by("season")
+            "transfers" : Transfer.objects.filter(season=h_mavsum).order_by("season", "-value")
         }
         return render(request, "latest-transfers.html", data)
 
