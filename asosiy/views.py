@@ -58,7 +58,7 @@ class CountryView(View):
         else:
             data = {
                 "clubs": Club.objects.filter(country=""),
-                "country": ""
+                "country": "Other"
             }
         return render(request, "country.html", data)
 
@@ -77,9 +77,9 @@ class CourseView(View):
 
 class TransferArchive(View):
     def get(self, request):
-        s = Transfer.objects.all().values('season').annotate(count=Count('season'))
+        h_mavsum = HozirgiMavsum.objects.last().mavsum
         data = {
-            "seasons" : s
+            "seasons" : Transfer.objects.filter(season__lt=h_mavsum).values('season').distinct()
         }
         return render(request, "transfer-archive.html", data)
 
