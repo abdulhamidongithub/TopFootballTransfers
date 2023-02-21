@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Sum
 from django.shortcuts import render
 from django.views import View
 from .models import *
@@ -18,7 +18,7 @@ class Tryouts(View):
 class ClubsView(View):
     def get(self, request):
         data = {
-            "clubs" : Club.objects.all()
+            "clubs" : Club.objects.annotate(qiymatlar=Sum('players__value')).order_by("-qiymatlar")
         }
         return render(request, "clubs.html", data)
 

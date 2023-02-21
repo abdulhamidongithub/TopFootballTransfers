@@ -18,7 +18,7 @@ class Player(models.Model):
     nationality = models.CharField(max_length=30)
     birth_date = models.DateField(null=True, blank=True)
     value = models.FloatField()
-    club = models.ForeignKey(Club, on_delete=models.CASCADE, null=True)
+    club = models.ForeignKey(Club, on_delete=models.CASCADE, null=True, related_name='players')
     def __str__(self):
         return self.name
 
